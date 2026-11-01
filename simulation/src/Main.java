@@ -1,7 +1,7 @@
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 void main() {
-    var iterations = 100_000;
+    var iterations = 1_000_000;
 
     var results = new ArrayList<GameResults>(iterations);
 

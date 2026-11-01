@@ -45,24 +45,13 @@ public class OrchardGame implements Game {
             // The cart! Two pieces from the fullest tree
             case 6: {
                 for (int i = 0; i < 2; i++) {
-                    int maxIndex = 0;
-
-                    for (int j = 1; j < trees.length; j++) {
-                        if (trees[i] > trees[maxIndex]) {
-                            maxIndex = j;
-                        }
-                    }
-
-                    if (trees[maxIndex] > 0) {
-                        trees[maxIndex]--;
-                    }
+                    int maxIndex = getFullestTreeIndex();
+                    removeFromTree(maxIndex);
                 }
                 break;
             }
             default: {
-                if (trees[die - 1] > 0) {
-                    trees[die - 1]--;
-                }
+                removeFromTree(die - 1);
                 break;
             }
         }
@@ -73,6 +62,23 @@ public class OrchardGame implements Game {
         } else if (Arrays.stream(trees).sum() <= 0) {
             teamWin = true;
             gameOver = true;
+        }
+    }
+
+    private int getFullestTreeIndex() {
+        int maxIndex = 0;
+
+        for (int j = 1; j < trees.length; j++) {
+            if (trees[j] > trees[maxIndex]) {
+                maxIndex = j;
+            }
+        }
+        return maxIndex;
+    }
+
+    private void removeFromTree(int index) {
+        if (trees[index] > 0) {
+            trees[index]--;
         }
     }
 }
