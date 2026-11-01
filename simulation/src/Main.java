@@ -12,7 +12,7 @@ void main() {
     }
 
     var teamWins = results.stream().filter(GameResults::teamWin).count() / Double.valueOf(iterations);
-    var averageTurns = results.stream().mapToInt(GameResults::totalTurns).average();
+    var averageTurns = results.stream().mapToInt(GameResults::totalTurns).average().getAsDouble();
 
     IO.println("Team win: %s - average turns: %s".formatted(teamWins, averageTurns));
 }
